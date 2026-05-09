@@ -1,0 +1,24 @@
+{
+  "name": "Shinu Music Bot",
+  "description": "Telegram group music bot — streams YouTube audio into Voice Chats.",
+  "keywords": ["telegram", "music", "bot", "youtube"],
+  "env": {
+    "API_ID":          { "description": "Telegram API ID — https://my.telegram.org/apps",           "required": true  },
+    "API_HASH":        { "description": "Telegram API Hash — https://my.telegram.org/apps",         "required": true  },
+    "BOT_TOKEN":       { "description": "Bot token from @BotFather on Telegram",                    "required": true  },
+    "OWNER_ID":        { "description": "Your Telegram numeric user ID",   "value": "423346191"                       },
+    "STRING_SESSION":  { "description": "Assistant session — run generate_session.py",              "required": true  },
+    "MONGO_URI":       { "description": "MongoDB connection string — https://mongodb.com/atlas",    "required": true  },
+    "YOUTUBE_API_KEY": { "description": "YouTube Data API v3 key — console.cloud.google.com",      "required": false },
+    "YOUTUBE_COOKIES": { "description": "Full cookies.txt content from youtube.com",               "required": false },
+    "GENIUS_TOKEN":    { "description": "Genius API token for /lyrics — genius.com/api-clients",   "required": false },
+    "MAX_QUEUE_SIZE":  { "description": "Max tracks per queue",            "value": "50"                              }
+  },
+  "buildpacks": [
+    { "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git" },
+    { "url": "heroku/python" }
+  ],
+  "formation": {
+    "worker": { "quantity": 1, "size": "basic" }
+  }
+}
